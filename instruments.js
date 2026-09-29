@@ -1,0 +1,11 @@
+export const instruments = {
+ soprano:{name:'Soprano',key:'B♭',offset:-2,voice:'soprano',number:'01 / THE FREE SPIRIT',character:'Clear & luminous',description:'Light. Lyrical. Full of possibility.\nA little closer to the sky.',card:'A clear, singing voice that floats above the ensemble.'},
+ alto:{name:'Alto',key:'E♭',offset:-9,voice:'alto',number:'02 / THE ESSENTIAL',character:'Warm & bright',description:'Warm. Expressive. Unmistakable.\nThe voice that feels like home.',card:'The familiar warmth at the heart of the saxophone family.'},
+ tenor:{name:'Tenor',key:'B♭',offset:-14,voice:'tenor',number:'03 / THE STORYTELLER',character:'Rich & soulful',description:'Rich. Soulful. Effortlessly cool.\nEvery note has a story.',card:'A rich, resonant sound with a little extra soul.'},
+ baritone:{name:'Baritone',key:'E♭',offset:-21,voice:'baritone',number:'04 / THE FOUNDATION',character:'Deep & bold',description:'Deep. Bold. Impossible to ignore.\nFeel the sound beneath the sound.',card:'Big personality. Deep resonance. The foundation of the quartet.'},
+ sopranissimo:{name:'Sopranissimo',key:'B♭',offset:10,voice:'soprano',number:'THE RARE FAMILY / HIGHEST',character:'Tiny & brilliant',description:'The smallest of the family.\nA brilliant voice in the highest register.',rare:true,register:'Highest'},
+ sopranino:{name:'Sopranino',key:'E♭',offset:3,voice:'soprano',number:'THE RARE FAMILY / HIGH',character:'Light & agile',description:'Small in stature. Bright in spirit.\nAn octave above the alto.',rare:true,register:'High'},
+ bass:{name:'Bass',key:'B♭',offset:-26,voice:'baritone',number:'THE RARE FAMILY / LOW',character:'Broad & resonant',description:'A voice with room to resonate.\nAn octave below the tenor.',rare:true,register:'Low'},
+ contrabass:{name:'Contrabass',key:'E♭',offset:-33,voice:'baritone',number:'THE RARE FAMILY / LOWER',character:'Vast & powerful',description:'An extraordinary presence.\nAn octave below the baritone.',rare:true,register:'Lower'},
+ subcontrabass:{name:'Subcontrabass',key:'B♭',offset:-38,voice:'baritone',number:'THE RARE FAMILY / LOWEST',character:'Immense & rare',description:'At the edge of the family.\nA remarkably rare, very low voice.',rare:true,register:'Lowest'}
+};
