@@ -1,4 +1,5 @@
 import {createListen} from './listen.js';
+import {createComposer} from './composer.js';
 import {audio,names,shortcuts,pitch,play,ready,stop,stopAll,volume} from './audio.js';
 const $=s=>document.querySelector(s);
 audio.selected='alto';let viewer,noteTimeout,errorTimeout,showNotes=false;
@@ -7,10 +8,12 @@ function modelNote(n){const pitch=((n%12)+12)%12,white=[0,2,4,5,7,9,11];return w
 function updateActive(){document.querySelectorAll('[data-note]').forEach(b=>{const target=Number(b.dataset.note),active=[...audio.active.entries()].some(([id,a])=>a.n===target||id.startsWith('song-')&&modelNote(a.n)===target);b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});viewer?.setActive([...audio.active.entries()].map(([id,a])=>id.startsWith('song-')?modelNote(a.n):a.n));}
 audio.onchange=n=>{updateActive();if(n!==undefined){const p=pitch(n);$('#note-label').textContent=p.written;$('#note-concert').textContent=`Concert ${p.concert}`;$('#note-indicator').classList.add('visible');}clearTimeout(noteTimeout);if(!audio.active.size)noteTimeout=setTimeout(()=>$('#note-indicator').classList.remove('visible'),1200);};audio.onerror=showError;
 const listen=createListen();
-function stopDemo(){listen.stop();stopAll();}
+const composer=createComposer({closeListen:listen.close});
+function stopDemo(){listen.stop();composer.stop();stopAll();}
 function toggleKeyboard(open){$('#keyboard-panel').hidden=!open;$('#keyboard-toggle').setAttribute('aria-expanded',open);$('#keyboard-toggle').setAttribute('aria-label',open?'Close piano keyboard':'Open piano keyboard');$('#keyboard-toggle').title=open?'Close keyboard':'Open keyboard';if(!open){stopDemo();$('#keyboard-toggle').focus({preventScroll:true});}}
 $('#keyboard-toggle').addEventListener('click',()=>toggleKeyboard($('#keyboard-panel').hidden));$('#close-keyboard').addEventListener('click',()=>toggleKeyboard(false));$('#fallback-keyboard').addEventListener('click',()=>toggleKeyboard(true));
 $('#listen-toggle').addEventListener('click',()=>{if(!$('#listen-panel').hidden&&!$('#keyboard-panel').hidden){toggleKeyboard(false);$('#close-listen').focus({preventScroll:true});}});
+$('#listen-toggle').addEventListener('click',()=>composer.close());
 function stopRotation(){viewer?.setRotate(false);$('#rotate-toggle').setAttribute('aria-pressed','false');}
 $('#reset-view').addEventListener('click',()=>{stopRotation();viewer?.reset();});
 function bindNote(b,n){b.dataset.note=n;b.setAttribute('aria-pressed','false');b.addEventListener('pointerdown',e=>{e.preventDefault();stopDemo();b.focus({preventScroll:true});b.setPointerCapture(e.pointerId);play(n,`pointer-${e.pointerId}`);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,e=>stop(`pointer-${e.pointerId}`));b.addEventListener('click',e=>{if(e.detail===0){stopDemo();play(n,`accessible-${n}`,{tap:true});}});}
