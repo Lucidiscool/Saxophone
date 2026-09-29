@@ -3,7 +3,7 @@ import {readMidi} from './midi.js';
 
 function melody(sequence,bpm){let start=0;const beat=60/bpm;return sequence.map(([n,b])=>{const note={midi:60+n,start,duration:b*beat*.88};start+=b*beat;return note;});}
 const songs=[
- {id:'time',title:'As Time Flies',artist:'Ty’s Music',notes:null},
+ {id:'time',title:'As Time Flies',artist:'Ty’s Music · alto sax hook',notes:null,midiSrc:'./assets/midi/as-time-flies-hook.mid',concert:true},
  {id:'careless',title:'Careless Whisper',artist:'George Michael · alto sax hook',notes:null,midiSrc:'./assets/midi/careless-whisper-hook.mid'},
  {id:'grace',title:'Amazing Grace',artist:'Traditional · alto arrangement',notes:melody([[0,1],[5,2],[9,.5],[5,.5],[9,2],[7,1],[5,2],[2,1],[0,2],[0,1],[5,2],[9,.5],[5,.5],[9,2],[7,.5],[9,.5],[12,3],[12,2],[9,1],[12,2],[9,.5],[5,.5],[9,2],[7,1],[5,2],[2,1],[0,2],[0,1],[5,2],[9,.5],[5,.5],[9,2],[7,1],[5,3]],96)},
  {id:'saints',title:'When the Saints Go Marching In',artist:'Traditional · alto arrangement',notes:melody([[0,1],[4,1],[5,1],[7,3],[0,1],[4,1],[5,1],[7,3],[0,1],[4,1],[5,1],[7,2],[4,2],[0,2],[4,2],[2,4],[4,1],[4,1],[2,1],[0,3],[0,1],[4,2],[7,2],[7,1],[5,3],[5,1],[4,1],[5,1],[7,2],[4,2],[2,2],[2,2],[0,4]],144)},
