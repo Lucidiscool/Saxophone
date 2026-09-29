@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7"><meta name="description" content="Meet the saxophone family. Explore beautiful instruments and play their voices with your keyboard or a touch.">
+  <title>Saxophone — Find your voice.</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav"><a class="brand" href="#" aria-label="Saxophone home"><span class="brand-icon">s.</span> saxophone</a><nav aria-label="Main navigation"><a href="#collection">The collection</a><a href="#about">The family</a><a class="nav-play" href="#studio">Play a note <span aria-hidden="true">♫</span></a></nav></header>
+<main>
+  <section id="studio" class="studio" aria-labelledby="title">
+    <div class="intro"><p class="eyebrow">A FAMILY OF EXTRAORDINARY VOICES</p><h1 id="title">Find your <span>voice.</span></h1><p>One instrument. A whole world of sound.</p></div>
+    <div class="instrument-tabs" role="group" aria-label="Choose a saxophone"><button data-instrument="soprano">Soprano</button><button data-instrument="alto" aria-pressed="true">Alto</button><button data-instrument="tenor">Tenor</button><button data-instrument="baritone">Baritone</button><button id="more-button" aria-expanded="false" aria-controls="rare-menu">More <span aria-hidden="true">⌄</span></button></div>
+    <div id="rare-menu" class="rare-menu" hidden><button data-instrument="sopranissimo">Sopranissimo</button><button data-instrument="sopranino">Sopranino</button><button data-instrument="bass">Bass</button><button data-instrument="contrabass">Contrabass</button><button data-instrument="subcontrabass">Subcontrabass</button></div>
+    <div class="instrument-stage">
+      <div class="instrument-copy"><p class="eyebrow" id="instrument-number">02 / THE ESSENTIAL</p><h2 id="instrument-name">Alto.</h2><p id="instrument-description">Warm. Expressive. Unmistakable.<br>The voice that feels like home.</p><div class="specs"><div><small>IN THE KEY OF</small><strong id="instrument-key">E♭</strong></div><div><small>CHARACTER</small><strong id="instrument-character">Warm & bright</strong></div></div><button class="listen" id="demo"><span class="play-icon" aria-hidden="true">▶</span><span id="demo-label">Hear its voice</span></button></div>
+      <div class="instrument-visual"><div class="halo"></div><span class="watermark" aria-hidden="true">alto</span><img id="instrument-image" src="assets/alto.png" alt="Alto saxophone" fetchpriority="high"><div class="rare-art" id="rare-art" hidden><span id="rare-symbol">B♭</span><p>A rare voice.<br>A remarkable range.</p></div><span class="visual-caption" id="visual-caption">THE ALTO SAXOPHONE</span></div>
+      <div class="note-panel"><div class="note-heading"><span class="live-dot"></span> YOUR NEXT NOTE</div><div class="note-readout"><span id="current-note">C</span><sup id="current-octave">4</sup></div><p id="concert-note">Concert E♭3 · 155.6 Hz</p><div class="wave" aria-hidden="true"></div><p class="touch-hint">A little curiosity.<br>A little improvisation.</p></div>
+    </div>
+    <div class="play-console"><div class="console-top"><div><span class="small-title">Make it yours.</span><span class="desktop-hint"> Click a key or use your keyboard.</span></div><div class="console-controls"><div class="octave-control"><button id="octave-down" aria-label="Lower octave">−</button><span id="octave-label">Octave 4</span><button id="octave-up" aria-label="Higher octave">+</button></div><label class="volume"><span aria-hidden="true">◖))</span><span class="sr-only">Volume</span><input id="volume" type="range" min="0" max="100" value="65"></label></div></div><div id="keyboard" class="keyboard" role="group" aria-label="Playable saxophone notes"></div><div class="console-bottom"><span><span class="headphones" aria-hidden="true">♬</span> Better with headphones</span><span id="audio-status" role="status">Touch a key to begin</span><span>Written pitch <span class="info-mark" title="The keys show written saxophone notes. The concert pitch above is the sound you hear.">i</span></span></div></div>
+  </section>
+  <section id="collection" class="collection"><div class="section-heading"><div><p class="eyebrow">SAME SOUL. DIFFERENT STORIES.</p><h2>Meet the quartet.</h2></div><p>From a whisper to a roar.<br>There’s a saxophone for every mood.</p></div><div class="cards" id="cards"></div></section>
+  <section id="about" class="family"><div><p class="eyebrow">BEYOND THE FAMILIAR</p><h2>A bigger family.<br>An even bigger sound.</h2><p>From the tiny sopranissimo to the towering subcontrabass, the saxophone spans an extraordinary range. Explore these rare relatives and hear their registers.</p><p class="family-note">Rare voices use pitch-shifted samples of the quartet. They’re an illustration of register, not recordings of those rare instruments.</p></div><div class="family-list" id="family-list"></div></section>
+</main>
+<footer><a class="brand" href="#"><span class="brand-icon">s.</span> saxophone</a><span>Made for the love of sound.</span><a href="credits.html">Sources & credits</a><a href="https://github.com/Lucidiscool/Saxophone" target="_blank" rel="noopener">GitHub</a></footer>
+<script src="app.js" defer></script>
+</body></html>
