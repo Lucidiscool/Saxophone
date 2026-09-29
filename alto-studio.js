@@ -3,7 +3,8 @@ import {audio,names,shortcuts,pitch,play,ready,stop,stopAll,volume} from './audi
 const $=s=>document.querySelector(s);
 audio.selected='alto';let viewer,noteTimeout,errorTimeout,showNotes=false;
 function showError(message){$('#audio-status').textContent=message;clearTimeout(errorTimeout);errorTimeout=setTimeout(()=>$('#audio-status').textContent='',6500);}
-function updateActive(){document.querySelectorAll('[data-note]').forEach(b=>{const active=[...audio.active.values()].some(a=>a.n===Number(b.dataset.note));b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});viewer?.setActive([...audio.active.entries()].map(([id,a])=>id.startsWith('song-')?(((a.n%12)+12)%12|| (a.n>0?12:0)):a.n));}
+function modelNote(n){const pitch=((n%12)+12)%12,white=[0,2,4,5,7,9,11];return white.reduce((best,key)=>Math.min((key-pitch+12)%12,(pitch-key+12)%12)<Math.min((best-pitch+12)%12,(pitch-best+12)%12)?key:best,white[0]);}
+function updateActive(){document.querySelectorAll('[data-note]').forEach(b=>{const target=Number(b.dataset.note),active=[...audio.active.entries()].some(([id,a])=>a.n===target||id.startsWith('song-')&&modelNote(a.n)===target);b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});viewer?.setActive([...audio.active.entries()].map(([id,a])=>id.startsWith('song-')?modelNote(a.n):a.n));}
 audio.onchange=n=>{updateActive();if(n!==undefined){const p=pitch(n);$('#note-label').textContent=p.written;$('#note-concert').textContent=`Concert ${p.concert}`;$('#note-indicator').classList.add('visible');}clearTimeout(noteTimeout);if(!audio.active.size)noteTimeout=setTimeout(()=>$('#note-indicator').classList.remove('visible'),1200);};audio.onerror=showError;
 const listen=createListen();
 function stopDemo(){listen.stop();stopAll();}
