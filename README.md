@@ -24,3 +24,5 @@ GitHub Pages publishes the root of main. Push a commit to update the site.
 ## Credits
 
 See [Sources & credits](credits.html) and [model provenance](assets/models/README.md). Source code is MIT licensed; third-party assets retain their documented licenses. The Smithsonian scan is public domain. Three.js is MIT; Draco is Apache 2.0.
+
+test
